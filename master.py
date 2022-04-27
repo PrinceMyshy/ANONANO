@@ -2,12 +2,19 @@ import discord
 
 client = discord.Client()
 
-class MyClient(discord.Client):
-    async def on_ready(self):
-        print('Logged on as {0}!'.format(self.user))
+@client.event
+async def on_ready():
+    print('We have logged in as {0.user}'.format(client))
 
-    async def on_message(self, message):
-        print('Message from {0.author}: {0.content}'.format(message))
+@client.event
+async def on_message(message):
+    if message.author == client.user:
+        return
 
-client = MyClient()
-client.run('OTY3OTMwMjAzNzk4MTE4NDQx.YmXdPw.9mBQqJjqo5N0RdHc6i86CdTApNw')
+    if message.content.startswith('$hello'):
+        await message.channel.send('Hello!')
+
+    if message.content.contains('haram'):
+        await message.channel.send("abstain from haram!")
+
+client.run('OTY3OTMwMjAzNzk4MTE4NDQx.YmXdPw.g9xyKrJdurqk74w-p3T4oNXDHeQ')
