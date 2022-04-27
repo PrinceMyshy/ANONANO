@@ -14,7 +14,8 @@ async def on_message(message):
     if message.content.startswith('$hello'):
         await message.channel.send('Hello!')
 
-    if message.content.contains('haram'):
+    if message.content.startswith('haram'):
         await message.channel.send("abstain from haram!")
+        
 
-client.run('OTY3OTMwMjAzNzk4MTE4NDQx.YmXdPw.g9xyKrJdurqk74w-p3T4oNXDHeQ')
+client.run('OTY3OTMwMjAzNzk4MTE4NDQx.YmXdPw.Xt-Icfqlo6ZYaEnvPZ9ARy3S5Js')
