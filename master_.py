@@ -26,11 +26,11 @@ async def on_message(message):
     if message.content.startswith('$hello'):
         await message.channel.send('Hello!')
 
-    if message.content.startswith('harram'):
-        await message.channel.send("abstain from haram!")
+    if message.content.startswith('halal'):
+        await message.channel.send("is pork halal meme?")
         
     if "haram" in message.content:
-        await message.channel.send("abstain from haram")
+        await message.channel.send("abstain from haram!")
         
     if 'banned word' in message.content:
         await message.channel.send("That word is banned!")
