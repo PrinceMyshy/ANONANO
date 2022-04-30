@@ -26,7 +26,7 @@ async def on_message(message):
     if message.content.startswith('$hello'):
         await message.channel.send('Hello!')
 
-    if message.content.startswith('haram'):
+    if message.content.startswith('haramx'):
         await message.channel.send("abstain from haram!")
         
     if "haram" in message.content:
