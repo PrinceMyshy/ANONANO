@@ -8,7 +8,9 @@ load_dotenv()
 token = os.getenv('DISCORD_TOKEN')
 
 
-#import logging
+#import logging 
+
+#change
 
 #logging on
 client = discord.Client()
