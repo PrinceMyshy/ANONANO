@@ -10,8 +10,6 @@ token = os.getenv('DISCORD_TOKEN')
 
 #import logging 
 
-#change
-
 #logging on
 client = discord.Client()
 
