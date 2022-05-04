@@ -34,6 +34,9 @@ async def on_message(message):
         
     if 'banned word' in message.content:
         await message.channel.send("That word is banned!")
+    
+     if 'what kinda question is that' in message.content:
+        await message.channel.send("I honestly don't know! What an idiot.")
                 
 client.run(token)
 
