@@ -43,14 +43,13 @@ async def on_message(message):
     if 'what kinda question is that' in message.content:
         await message.channel.send("I honestly don't know! What an idiot.")
         
-intents = discord.Intents.default()        
-client = discord.Client(intents=intents) 
-client=commands.Bot(command_prefix=".")        
+
+client = commands.Bot(command_prefix=".")        
 
 @client.command()
-async def question(ctx, ask: message.content):
+async def question(ctx, ask: ctx.message):
     random = ["love", "stop", "no", "hmm... gay", "why?", "is math related to science?"]
-    await ctx.send(f"{random.choice(random)}")
+    await message.send(f"**You asked:** *{ask}* | **and I say**: *{random.choice(random)}*")
 
 @client.command()
 async def ship(ctx, member_1: discord.Member, member_2: discord.Member):
@@ -70,4 +69,8 @@ logger.setLevel(logging.DEBUG)
 handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
 handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
 logger.addHandler(handler)
+'''
+
+'''intents = discord.Intents.default()        
+client = discord.Client(intents=intents) 
 '''
