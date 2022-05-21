@@ -4,6 +4,24 @@ import discord
 import logging
 import random
 
+import asyncio
+import collections
+import inspect
+import importlib.util
+import sys
+import traceback
+import types
+
+import discord
+
+from .core import GroupMixin
+from .view import StringView
+from .context import Context
+from . import errors
+from .help import HelpCommand, DefaultHelpCommand
+from .cog import Cog
+
+
 from discord.ext import commands
 
 from dotenv import load_dotenv
@@ -49,7 +67,7 @@ client = commands.Bot(command_prefix=".")
 @client.command()
 async def question(ctx, ask: ctx.message):
     random = ["love", "stop", "no", "hmm... gay", "why?", "is math related to science?"]
-    await message.send(f"**You asked:** *{ask}* | **and I say**: *{random.choice(random)}*")
+    await ctx.send(f"**You asked:** *{ask}* | **and I say**: *{random.choice(random)}*")
 
 @client.command()
 async def ship(ctx, member_1: discord.Member, member_2: discord.Member):
