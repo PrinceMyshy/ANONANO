@@ -2,6 +2,7 @@ from cgi import test
 import os
 import discord
 import logging
+import random
 
 from discord.ext import commands
 
