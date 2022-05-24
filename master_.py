@@ -11,6 +11,11 @@ from discord import Embed
 load_dotenv()
 token = os.getenv('DISCORD_TOKEN')
 
+client = discord.Client()
+intents = discord.Intents.all()
+
+bot = commands.Bot(command_prefix = ".")
+
 ######################################################################################################################################
 
 ####################################################################################################
@@ -18,53 +23,52 @@ token = os.getenv('DISCORD_TOKEN')
 ####################################################################################################
 
 #logging on
-intents = discord.Intents.default()
-intents.message_content = True
-
-client = discord.Client(intents=intents)
 
 @client.event
-async def on_ready(self):
-    print(f'I am now logged in as {self.user} (ID: {self.user.id})')
+async def on_ready():
     print('------')
-        
-async def on_message(self, message):
-    if message.author.id == self.user.id:
+    print('I am now logged in as {0.user}'.format(client))
+    print('------')
+     
+async def on_message(message):
+    if message.author == client.user:
         return
 
 #############################################
                 # Messages #
 #############################################
 
-    if message.content.startswith('!hello'):
-        await message.reply('Hello!', mention_author=True)
+    elif message.content.startswith('!hello'):
+        await message.channel.send('Hello!')
 
-    if message.content.startswith('halal'):
+    elif message.content.startswith('halal'):
         await message.channel.send("is pork halal?")
             
-    if "haram" in message.content:
+    elif "haram" in message.content:
         await message.channel.send("abstain from haram!")
             
-    if 'banned word' in message.content:
+    elif 'banned word' in message.content:
         await message.channel.send("That word is banned!")
         
-    if 'what kinda question is that' in message.content:
-        await message.channel.send("I honestly don't know! What an idiot.")
-        
-             
+    elif 'what kinda question is that' in message.content:
+        await message.channel.send("I honestly don't know! What an idiot!")
+
+    await bot.process_commands(message)
+
 ####################################################################################################
                                             # COMMANDS #
 ####################################################################################################
-   
 
-client = commands.Bot(command_prefix=".")        
+  
+client = discord.Client(intents=intents)  
+        
 
-@client.command()
+@bot.command()
 async def question(ctx, arg):
     random = ["love", "stop", "no", "hmm... gay", "why?", "is math related to science?"]
     await ctx.send(f"**You asked:** *{arg}* | **and I say**: *{random.choice(random)}*")
 
-@client.command()
+@bot.command()
 async def ship(ctx, member_1: discord.Member, member_2: discord.Member):
     """Ship 2 members"""
     from random import randint
